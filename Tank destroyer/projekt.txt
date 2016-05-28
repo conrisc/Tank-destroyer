@@ -1,0 +1,55 @@
+#Spis klas:
+	- Game
+	- Container
+	- DrawElement
+	- Character
+	- Hero
+	- Enemy
+	- Weapon
+	- Bullet
+	- LifeTime
+
+#Opis architektury
+	Jest to gra, która dzia³a w pêtli (pêtla koñczy siê tylko po przegraniu gry, po czym nastêpuje zamkniêcie aplikacji). Sterujemy jedn¹ postaci¹ widoczn¹ na ekranie i staramy siê  unieszkodliwiæ wrogów. Z zabitych wrogów mo¿emy otrzymaæ monetê, która daje nam $. Za $ mo¿emy ulepszyæ broñ naszej postaci. Przegrywamy, gdy wrogowie zniszcz¹ nasz¹ bazê.
+
+#Opis klas
+	1) Game
+		- Klasa g³ówna, która odpowiada za otwarcie okna aplikacji, utworzenie podstawowych obiektów oraz przygotowanie nowej rozgrywki. Odpowiada ona równie¿ za kontrolê nad zdarzeniami (klikniêciami myszy itp.), wykreœlaniem oraz g³ówn¹ pêtl¹ programu.
+	
+	2) Container
+		- Klasa przechowuj¹ca wszystkie podstawowe obiekty danej rozgrywki:
+					- Szerokoœæ i wysokoœæ planszy
+					- Bohater
+					- Akutalna broñ
+					- Lista wrogów znajduj¹cych siê na planszy
+					- Lista monet, które wypad³y z unieszkodliwionych wrogów
+					- OpóŸnienie pêtli programu
+					- Timer odpowiedzialny za wywo³ywanie zdarzeñ co okreœlony czas
+					- Generator liczb losowych
+					- Liczba ca³kowita LUCK - szczêœcie na wypadniêcie monety z wroga
+
+	3) DrawElement
+		- Jedna z wa¿niejszych klas. Dziedzicz¹ po niej wszystkie klasy, których obiekty mog¹ zostaæ wyœwietlone na ekranie. Umo¿liwia ona wykreœlaæ elementy na buforze oraz wczytywaæ obrazki. Udostêpnia inne metody powi¹zane z rysowaniem elementów. Jednym z obiektów tej klasy jest MONETA.
+
+	4) Character
+		- Klasa POSTACI posiadaj¹cych ¿ycie.
+
+	5) Hero
+		- Klasa dziedzicz¹ca po klasie 'Character'. Obiekt tej klasy (podczas rozgrywki zostaje utworzony tylko jeden) przedstawia bohatera, którym sterujemy. Sterowanie polega na wystrzeliwaniu pocisków. Obiekt tej klasy posiada równie¿ informacje o stanie gry.
+
+	6) Enemy
+		- Klasa dziedzicz¹ca po klasie 'Character'. Obiekty tej klasy przestawiaj¹ wrogów. Wrogowie mog¹ siê poruszaæ tylko naprzód, maj¹ wyznaczony cel (w postaci punktu) do którego zmierzaj¹. Unieszkodliwiony wróg mo¿e pozostawiæ po sobie monetê.
+	
+	7) Weapon
+		- Podczas rozgrywki jest tworzony tylko jeden obiekt tej klasy. Taki obiekt posiada informacje o obecnych ustawieniach broni.
+	
+	8) Bullet
+		- Klasa dziedzicz¹ca po klasie 'Weapon'. Posiada dodatkowe informacje o CELU. Obs³uguje kolizje z innymi obiektami wykreœlonymi na ekranie.
+	
+	9) LifeTime
+		- Pasek ¿ycia towarzysz¹cy ka¿dej postaci typu 'Character'. Przedstawia on % ¿ycia danej jednostki w postaci graficznej. Klasa dziedziczy po klasie 'DrawElement'.
+
+
+#Inne
+	W programie zosta³y wykorzystane wbudowane kolekcje: Lista dwukierunkowa
+
